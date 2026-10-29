@@ -1,0 +1,29 @@
+name: Test Workflow
+
+on:
+  push:
+    branches: [ main, master, "feature/*" ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  hello:
+    name: Say hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a greeting
+        run: echo "Hello, ${{ github.actor }}!"
+
+      - name: Show where we are
+        run: |
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+
+  goodbye:
+    name: Say goodbye
+    needs: hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a farewell
+        run: echo "Goodbye! The hello job finished first."
