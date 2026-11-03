@@ -26,7 +26,7 @@ public class NewsService {
                 : newsRepository.findAllByStatusOrderByPublishedAtDesc(status);
 
         return items.stream()
-                .sorted(Comparator.comparing(NewsItem::getUpdatedAt).reversed())
+                .sorted(Comparator.comparing(NewsItem::getPublishedAt).reversed())
                 .map(this::toResponse)
                 .toList();
     }
