@@ -1,0 +1,22 @@
+# Build output
+target/
+*.class
+
+# Local uploads (README suggests ./data for local runs)
+data/
+
+# IDE / OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Logs
+*.log
+
+# Not needed inside the image
+.git/
+.env
+.env.*
+Dockerfile
+.dockerignore
