@@ -52,5 +52,25 @@ services:
       # The UI stays at http://localhost:5173; nginx inside listens on 8080.
       - "5173:8080"
 
+  avatar-service:
+    build:
+      context: ./avatar-service
+    container_name: student-news-avatar-service
+    environment:
+      PORT: "8090"
+      UPLOAD_DIR: /data/avatars
+      MAX_BYTES: "2097152"
+    ports:
+      - "8090:8090"
+    volumes:
+      - avatar_data:/data/avatars
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8090/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+
 volumes:
   postgres_data:
+  avatar_data:  
