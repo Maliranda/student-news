@@ -14,3 +14,4 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedHeaders("*");
     }
 }
+// test paths-ignore: backend change triggers E2E
